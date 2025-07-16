@@ -1,5 +1,11 @@
+import Button from "@/components/ui/Button";
+
 const Home: React.FC = () => {
-  return <div>111</div>;
+  return (
+    <div>
+      <Button>123</Button>
+    </div>
+  );
 };
 
 export default Home;
