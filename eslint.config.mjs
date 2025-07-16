@@ -91,10 +91,7 @@ const eslintConfig = [
         "error",
         { prefer: "type-imports" },
       ],
-      "prettier/prettier": [
-        "error",
-        { singleQuote: false, semi: true, endOfLine: "auto" },
-      ]
+      "max-len": ["error", { "code": 80 }]
     },
   }),
 ];
