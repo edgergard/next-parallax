@@ -1,62 +1,117 @@
 "use client";
 
+import classNames from "classnames";
 import React from "react";
-import { twMerge } from "tailwind-merge";
+import { ArrowIcon } from "../icons";
 
 type ButtonVariant = "outline" | "text" | "arrow";
-type ButtonSize = "small" | "medium";
+type ButtonSize = "small" | "big";
 type BaseButtonProps = Omit<
   React.ButtonHTMLAttributes<HTMLButtonElement>,
   "children"
 >;
 
+interface BaseProps {
+  disabled?: boolean;
+  customClassName?: string;
+  onClick?: () => void;
+}
+
 type Props = (
-  | {
+  | ({
       variant?: Exclude<ButtonVariant, "arrow">;
-      size?: ButtonSize;
       children: string;
       arrowDirection?: never;
-      customClassName?: string;
-    }
-  | {
+      size?: never;
+    } & BaseProps)
+  | ({
       variant?: Exclude<ButtonVariant, "outline" | "text">;
-      arrowDirection: "up" | "down";
-      size?: ButtonSize;
       children?: never;
-      customClassName?: string;
-    }
+      size?: ButtonSize;
+      arrowDirection: "up" | "down";
+    } & BaseProps)
 ) &
   BaseButtonProps;
 
+const BG_HOVER_GRADIENT_STYLES = `
+  hover:bg-linear-120 hover:from-button-gradient-from 
+  hover:via-button-gradient-via hover:to-button-gradient-to
+`;
+
+const TEXT_HOVER_GRADIENT_STYLES = `
+  ${BG_HOVER_GRADIENT_STYLES}
+  hover:text-transparent hover:bg-clip-text
+`;
+
 const variantStyles: Record<ButtonVariant, string> = {
-  outline: "bg-button-solid-bg text-button-font-color",
-  text: "",
-  arrow: "",
+  outline: `
+    text-white bg-button-solid-bg text-button-font-color
+    rounded-button-radius gradient-button 
+    border-[2px] border-button-gradient-via ${BG_HOVER_GRADIENT_STYLES}
+  `,
+  text: `
+    text-white bg-button-solid-bg text-button-font-color
+    rounded-button-radius hover:text-transparent 
+    hover:bg-clip-text ${TEXT_HOVER_GRADIENT_STYLES}
+  `,
+  arrow: `
+    border-[2px] border-white hover:border-button-gradient-via
+    p-gap-button-arrow rounded-button-radius disabled:border-button-disabled
+  `,
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
-  small:
-    "pt-button-small-t pb-button-small-b px-button-small-x text-button-small",
-  medium:
-    "pt-button-medium-t pb-button-medium-b px-button-medium-x text-button-medium",
+  small: `
+    pt-gap-button-small-t pb-gap-button-small-b 
+    px-gap-button-small-x text-white
+  `,
+  big: `
+    pt-gap-button-big-t pb-gap-button-big-b px-gap-button-big-x 
+    text-font-size-button-big
+  `,
 };
 
 const Button: React.FC<Props> = ({
   variant = "outline",
-  size = "medium",
-  customClassName = "",
+  size,
+  disabled,
+  customClassName,
+  arrowDirection,
   children,
+  onClick = () => {},
   ...rest
 }) => {
-  const classNames = twMerge(
+  const className = classNames(
+    `
+      w-fit cursor-pointer disabled:cursor-not-allowed transition-colors 
+      duration-400 group
+    `,
     variantStyles[variant],
-    sizeStyles[size],
+    size && sizeStyles[size],
     customClassName,
   );
 
+  const iconClassName = classNames(
+    `
+      size-6 transition-colors duration-400 
+      group-hover:text-button-gradient-via
+    `,
+    {
+      "rotate-180": arrowDirection === "down",
+      "text-button-disabled": disabled,
+      "text-white": !disabled,
+    },
+  );
+
   return (
-    <button className={classNames} {...rest}>
+    <button
+      className={className}
+      disabled={disabled}
+      onClick={onClick}
+      {...rest}
+    >
       {children}
+      {variant === "arrow" && <ArrowIcon className={iconClassName} />}
     </button>
   );
 };

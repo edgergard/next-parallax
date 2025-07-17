@@ -16,23 +16,27 @@ body {
   --font-family-grotesk: ClashGrotesk;
 
   --color-white: white;
-  --color-button-gradient-from: var(--button-gradient-from);
-  --color-button-gradient-via: var(--button-gradient-via);
-  --color-button-gradient-to: var(--button-gradient-to);
-  --color-button-font-color: var(--color-white);
+  --color-gray: #808080;
   --color-h1-gradient-start: #b53ea4;
   --color-h1-gradient-mid: #fc6f32;
   --color-h1-gradient-end: #ff4a59;
 
+  --color-button-gradient-from: var(--button-gradient-from);
+  --color-button-gradient-via: var(--button-gradient-via);
+  --color-button-gradient-to: var(--button-gradient-to);
+  --color-button-font-color: var(--color-white);
+  --color-button-disabled: var(--color-gray);
+
   --text-font-size-button--small: 18px;
   --text-font-size-button-big: 24px;
 
-  --spacing-button-small-b: 16px;
-  --spacing-button-small-t: 14px;
-  --spacing-button-small-x: 32px;
-  --spacing-button-big-b: 24px;
-  --spacing-button-big-t: 22px;
-  --spacing-button-big-x: 48px;
+  --spacing-gap-button-small-b: 16px;
+  --spacing-gap-button-small-t: 14px;
+  --spacing-gap-button-small-x: 32px;
+  --spacing-gap-button-big-b: 24px;
+  --spacing-gap-button-big-t: 22px;
+  --spacing-gap-button-big-x: 48px;
+  --spacing-gap-button-arrow: 16px;
 
   --radius-button-radius: var(--button-radius);
 }
