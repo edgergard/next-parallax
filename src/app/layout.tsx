@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import fonts from "@/styles/fonts";
-import "./globals.css";
+import "@/styles/globals.css";
 
 interface RootLayoutProps {
   children: React.ReactNode;
