@@ -1,6 +1,25 @@
 @import "tailwindcss";
 
-@theme inline {
+@theme {
   --font-family-inter: Inter;
   --font-family-grotesk: ClashGrotesk;
+
+  --color-white: #FFF;
+  --color-button-gradient-start: #963488;
+  --color-button-gradient-mid: #FC6F32;
+  --color-button-gradient-end: #FF4A59;
+  --color-button-font-color: var(--color-white);
+  --color-h1-gradient-start: #B53EA4;
+  --color-h1-gradient-mid: #FC6F32;
+  --color-h1-gradient-end: #FF4A59;
+
+  --text-font-size-button-small: 18px;
+  --text-font-size-button-medium: 24px;
+
+  --spacing-button-small-b: 16px;
+  --spacing-button-small-t: 14px;
+  --spacing-button-small-x: 32px;
+  --spacing-button-medium-b: 24px;
+  --spacing-button-medium-t: 22px;
+  --spacing-button-medium-x: 48px;
 }
