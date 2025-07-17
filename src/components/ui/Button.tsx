@@ -22,12 +22,12 @@ type Props = (
       variant?: Exclude<ButtonVariant, "arrow">;
       children: string;
       arrowDirection?: never;
-      size?: never;
+      size?: ButtonSize;
     } & BaseProps)
   | ({
       variant?: Exclude<ButtonVariant, "outline" | "text">;
       children?: never;
-      size?: ButtonSize;
+      size?: never;
       arrowDirection: "up" | "down";
     } & BaseProps)
 ) &
