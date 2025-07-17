@@ -1,18 +1,21 @@
 import type { Metadata } from "next";
+import fonts from "@/styles/fonts";
 import "./globals.css";
+
+interface RootLayoutProps {
+  children: React.ReactNode;
+}
 
 export const metadata: Metadata = {
   title: "Next parallax",
   description: "Next.js application with parallax scroll",
 };
 
-interface RootLayoutProps {
-  children: React.ReactNode;
-}
+const { inter } = fonts;
 
 const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
   return (
-    <html lang="en">
+    <html className={inter.className} lang="en">
       <body suppressHydrationWarning>{children}</body>
     </html>
   );
