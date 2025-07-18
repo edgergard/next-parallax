@@ -14,16 +14,16 @@
 
   --color-white: white;
   --color-gray: #808080;
-  --color-light-gray: #8F99B0;
+  --color-light-gray: #8f99b0;
   --color-dark-gray: #606060;
-  --color-light-green: #40FF75;
-  --color-light-red: #FF1B44;
+  --color-light-green: #40ff75;
+  --color-light-red: #ff1b44;
 
   --color-h1-gradient-end: #ff4a59;
   --color-h1-gradient-end: #ff4a59;
   --color-h1-gradient-end: #ff4a59;
 
-  --color-table-even-row: #C9D9FF14;
+  --color-table-even-row: #c9d9ff14;
 
   --color-button-gradient-from: var(--button-gradient-from);
   --color-button-gradient-via: var(--button-gradient-via);
