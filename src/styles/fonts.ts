@@ -1,8 +1,13 @@
-import { Inter } from "next/font/google";
+import { Inter, Metrophobic } from "next/font/google";
 import localFont from "next/font/local";
 
 const inter = Inter({
   subsets: ["latin"],
+});
+
+const metrophobic = Metrophobic({
+  subsets: ["latin"],
+  weight: "400"
 });
 
 const clashGrotesk = localFont({
@@ -40,6 +45,6 @@ const clashGrotesk = localFont({
   ],
 });
 
-const fonts = { inter, clashGrotesk };
+const fonts = { inter, metrophobic, clashGrotesk };
 
 export default fonts;
