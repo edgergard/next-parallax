@@ -91,7 +91,7 @@ const eslintConfig = [
         "error",
         { prefer: "type-imports" },
       ],
-      "max-len": ["error", { "code": 80 }]
+      "max-len": ["error", { code: 80 }],
     },
   }),
 ];

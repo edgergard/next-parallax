@@ -7,7 +7,7 @@ const inter = Inter({
 
 const metrophobic = Metrophobic({
   subsets: ["latin"],
-  weight: "400"
+  weight: "400",
 });
 
 const clashGrotesk = localFont({
