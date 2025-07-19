@@ -1,4 +1,4 @@
-export const truncate = (string: string, maxLength: number) => {
+export const truncate = (string: string, maxLength: number): string => {
   return string.length > maxLength
     ? `${string.slice(0, maxLength)}...`
     : string;

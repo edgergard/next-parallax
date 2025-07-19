@@ -11,7 +11,7 @@ interface UseLeaderboard {
   columns: LeaderboardColumn[];
   shownRows: Record<LeaderboardColumnId, string>[];
   isLeaderboardExpanded: boolean;
-  toggleShownRowsCount: () => void;
+  toggleLeaderboardExpand: () => void;
 }
 
 const INITIAL_SHOWN_ROWS_COUNT = 8;
@@ -61,7 +61,7 @@ const useLeaderboard = (): UseLeaderboard => {
   const isLeaderboardExpanded = shownRowsCount === EXPANDED_SHOWN_ROWS_COUNT;
   const shownRows = rows.slice(0, shownRowsCount);
 
-  const toggleShownRowsCount = (): void => {
+  const toggleLeaderboardExpand = (): void => {
     const payload = isLeaderboardExpanded
       ? INITIAL_SHOWN_ROWS_COUNT
       : EXPANDED_SHOWN_ROWS_COUNT;
@@ -73,7 +73,7 @@ const useLeaderboard = (): UseLeaderboard => {
     columns,
     shownRows,
     isLeaderboardExpanded,
-    toggleShownRowsCount,
+    toggleLeaderboardExpand,
   };
 };
 

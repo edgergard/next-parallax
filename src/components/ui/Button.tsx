@@ -67,7 +67,7 @@ const sizeStyles: Record<ButtonSize, string> = {
   `,
   big: `
     pt-gap-button-big-t pb-gap-button-big-b px-gap-button-big-x 
-    text-font-size-button-big
+    text-font-size-button-big font-medium
   `,
 };
 
@@ -93,7 +93,7 @@ const Button: React.FC<Props> = ({
 
   const iconClassName = classNames(
     `
-      size-6 transition-colors duration-400 
+      size-6 transition-colors duration-400 leading-0
       group-hover:text-button-gradient-via
     `,
     {

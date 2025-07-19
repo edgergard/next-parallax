@@ -16,7 +16,10 @@ const { inter } = fonts;
 const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
   return (
     <html className={`${inter.className} h-full`} lang="en">
-      <body suppressHydrationWarning className="h-full">
+      <body
+        suppressHydrationWarning
+        className="h-full bg-soft-black text-white"
+      >
         {children}
       </body>
     </html>

@@ -1,11 +1,20 @@
-import { Leaderboard } from "@/components/containers";
-import { ArrowIcon } from "@/components/icons";
+import {
+  About,
+  Carousel,
+  Footer,
+  Hero,
+  Leaderboard,
+} from "@/components/sections";
 
 const Home: React.FC = () => {
   return (
-    <div className="flex flex-col h-full gap-y-10 items-center bg-black">
-      <Leaderboard />
-    </div>
+    <main>
+      <Hero className="pb-[300px] px-page-x" />
+      <About className="pt-[100px] pb-[300px] px-page-x" />
+      <Carousel className="pt-[100px] pb-[300px]" />
+      <Leaderboard className="pt-[100px] pb-[500px] px-page-x" />
+      <Footer className="pb-[112px]" />
+    </main>
   );
 };
 
