@@ -46,7 +46,7 @@ const TEXT_HOVER_GRADIENT_STYLES = `
 const variantStyles: Record<ButtonVariant, string> = {
   outline: `
     text-white bg-button-solid-bg text-button-font-color
-    rounded-button-radius gradient-button 
+    rounded-button-radius hover:border-transparent
     border-[2px] border-button-gradient-via ${BG_HOVER_GRADIENT_STYLES}
   `,
   text: `

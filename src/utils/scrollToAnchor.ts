@@ -5,7 +5,7 @@ export const scrollToAnchor = (anchorId: Anchor): void => {
 
   if (!el) {
     return;
-  };
+  }
 
   window.scroll({
     top: el.offsetTop,

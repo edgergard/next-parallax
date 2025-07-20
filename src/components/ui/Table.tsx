@@ -38,7 +38,7 @@ const Table: React.FC<Props> = ({ columns, rows, ref }) => {
 
       <tbody className="font-family-metrophobic text-white">
         {rows.map((row, index) => {
-          const rowRef = ref?.rowIndex=== index ? ref.rowRef : undefined;
+          const rowRef = ref?.rowIndex === index ? ref.rowRef : undefined;
 
           return (
             <tr className="odd:bg-table-even-row" key={index} ref={rowRef}>

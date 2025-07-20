@@ -20,14 +20,15 @@ html {
   --color-gray: #808080;
   --color-light-gray: #8f99b0;
   --color-dark-gray: #606060;
-  --color-dark-gray-2: #8E8E8E;
+  --color-dark-gray-2: #8e8e8e;
   --color-light-green: #40ff75;
   --color-light-red: #ff1b44;
-  --color-soft-black: #090A0E;
+  --color-soft-black: #090a0e;
+  --color-light-black: #161A24;
 
-  --color-h1-gradient-start: #B53EA4;
-  --color-h1-gradient-via: #FC6F32;
-  --color-h1-gradient-to: #FF4A59;
+  --color-h1-gradient-start: #b53ea4;
+  --color-h1-gradient-via: #fc6f32;
+  --color-h1-gradient-to: #ff4a59;
 
   --color-table-even-row: #c9d9ff14;
 

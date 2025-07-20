@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Providers } from "@/providers";
 import fonts from "@/styles/fonts";
 import "@/styles/globals.css";
 
@@ -18,9 +19,9 @@ const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
     <html className={`${inter.className} h-full`} lang="en">
       <body
         suppressHydrationWarning
-        className="h-full bg-soft-black text-white"
+        className="h-full"
       >
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

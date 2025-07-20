@@ -1,14 +1,26 @@
 import React from "react";
 import { Anchor } from "@/enums";
 import { Button } from "../ui";
+import CometImage from "@/assets/images/comet-image.png";
+import Image from "next/image";
+import { useParallax } from "react-scroll-parallax";
 
 const About: React.FC<{ className?: string }> = ({ className }) => {
+  const { ref } = useParallax<HTMLDivElement>({
+    translateX: [-100, 300],
+    translateY: [100, 400],
+  });
+
   return (
     <section
       id={Anchor.About}
       aria-label="about-section"
-      className={className}
+      className={`overflow-x-hidden ${className}`}
     >
+      <div ref={ref} className="relative z-[-1]">
+        <Image alt="comet-image" src={CometImage} width={100} height={100} />
+      </div>
+
       <div className="flex flex-col gap-y-8 w-[1100px]">
         <h2
           className={`

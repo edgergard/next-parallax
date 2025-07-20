@@ -58,7 +58,7 @@ const Hero: React.FC<{ className?: string }> = ({ className }) => {
       <div className="flex flex-col gap-y-9 pb-[100px]">
         <h1
           className={`
-             font-family-grotesk text-font-size-h1 font-medium
+            font-family-grotesk text-font-size-h1 font-medium max-w-[1629px]
             text-transparent bg-clip-text ${gradientClassname}
           `}
         >

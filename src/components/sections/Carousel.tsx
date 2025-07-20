@@ -1,6 +1,7 @@
 import type { StaticImageData } from "next/image";
 import Image from "next/image";
 import React from "react";
+import { useParallax } from "react-scroll-parallax";
 import ArweaveImage from "@/assets/images/arweave-image.png";
 import BittensorImage from "@/assets/images/bittensor-image.png";
 import RedImage from "@/assets/images/red-image.png";
@@ -47,23 +48,33 @@ const carouselElements: CarouselElement[] = [
   },
 ];
 
+const duplicatedArray = [
+  ...carouselElements,
+  ...carouselElements,
+  ...carouselElements,
+];
+
 const Carousel: React.FC<{ className?: string }> = ({ className }) => {
+  const parallax = useParallax<HTMLDivElement>({
+    translateX: [20, 0],
+  });
+
   return (
     <section aria-label="carousel-section" className={className}>
-      <div className="flex flex-col gap-y-12 items-center jusify-center">
+      <div className="flex flex-col gap-y-12 items-center jusify-center overflow-x-hidden">
         <h3 className="font-family-grotesk text-font-size-h3">
           Projects integrated into the Arrakis AI Ecosystem
         </h3>
 
-        <div className="flex gap-x-[180px]">
-          {carouselElements.map(({ id, image, width, height }) => (
+        <div ref={parallax.ref} className="flex gap-x-[180px]">
+          {duplicatedArray.map(({ id, image, width, height }, index) => (
             <Image
               alt="carousel-image"
-              className="object-contain"
               height={height}
-              key={id}
+              key={id + index}
               src={image}
               width={width}
+              className="object-contain"
             />
           ))}
         </div>
