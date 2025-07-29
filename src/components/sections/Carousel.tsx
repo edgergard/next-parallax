@@ -61,20 +61,24 @@ const Carousel: React.FC<{ className?: string }> = ({ className }) => {
 
   return (
     <section aria-label="carousel-section" className={className}>
-      <div className="flex flex-col gap-y-12 items-center jusify-center overflow-x-hidden">
+      <div 
+        className={`
+          flex flex-col gap-y-12 items-center jusify-center overflow-x-hidden
+        `}
+      >
         <h3 className="font-family-grotesk text-font-size-h3">
           Projects integrated into the Arrakis AI Ecosystem
         </h3>
 
-        <div ref={parallax.ref} className="flex gap-x-[180px]">
+        <div className="flex gap-x-[180px]" ref={parallax.ref}>
           {duplicatedArray.map(({ id, image, width, height }, index) => (
             <Image
               alt="carousel-image"
+              className="object-contain"
               height={height}
               key={id + index}
               src={image}
               width={width}
-              className="object-contain"
             />
           ))}
         </div>

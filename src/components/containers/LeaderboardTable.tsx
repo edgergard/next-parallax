@@ -29,25 +29,20 @@ const LeaderboardTable: React.FC = () => {
 
   return (
     <div className="flex flex-col">
-      <motion.div
-        layout
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0, scale: 0 }}
-        className="overflow-hidden"
-      >
-        <Table
-          columns={columns}
-          ref={{ rowRef, rowIndex: 7 }}
-          rows={shownRows}
-        />
-      </motion.div>
+      <Table
+        columns={columns}
+        ref={{ rowRef, rowIndex: 7 }}
+        rows={shownRows}
+      />
 
       <AnimatePresence>
         {shouldExpandShow && (
           <motion.div
             animate={{ opacity: 1, y: 0 }}
-            className="flex justify-end gap-x-8 w-full sticky bottom-0 right-0 py-8 bg-black"
+            className={`
+              flex justify-end gap-x-8 w-full sticky bottom-0 right-0 py-8
+              bg-black
+            `}
             exit={{ opacity: 0, y: 20 }}
             initial={{ opacity: 0, y: 20 }}
             transition={{ type: "tween", duration: 0.25 }}

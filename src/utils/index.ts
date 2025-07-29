@@ -1,4 +1,15 @@
-import { truncate } from "./truncate";
 import { scrollToAnchor } from "./scrollToAnchor";
+import {
+  getSessionStorage,
+  removeSessionStorage,
+  setSessionStorage,
+} from "./storage";
+import { truncate } from "./truncate";
 
-export { truncate, scrollToAnchor };
+export {
+  truncate,
+  scrollToAnchor,
+  setSessionStorage,
+  getSessionStorage,
+  removeSessionStorage,
+};

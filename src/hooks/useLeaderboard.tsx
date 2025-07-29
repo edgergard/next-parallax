@@ -1,8 +1,9 @@
 import type { ReactNode } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowIcon, DashIcon } from "@/components/icons";
 import { leaderboardRows as rows } from "@/mocks";
 import type { LeaderboardColumnId, TableColumn } from "@/types";
+import { getSessionStorage, setSessionStorage } from "@/utils";
 
 type IconId = "dash" | "arrow_up" | "arrow_down";
 type LeaderboardColumn = Omit<TableColumn, "id"> & { id: LeaderboardColumnId };
@@ -58,6 +59,11 @@ const useLeaderboard = (): UseLeaderboard => {
     INITIAL_SHOWN_ROWS_COUNT,
   );
 
+  useEffect(() => {
+    const isExpanded = getSessionStorage("LEADERBOARD")?.shownRowsCount;
+    setShownRowsCount(isExpanded || INITIAL_SHOWN_ROWS_COUNT);
+  }, []);
+
   const isLeaderboardExpanded = shownRowsCount === EXPANDED_SHOWN_ROWS_COUNT;
   const shownRows = rows.slice(0, shownRowsCount);
 
@@ -66,6 +72,7 @@ const useLeaderboard = (): UseLeaderboard => {
       ? INITIAL_SHOWN_ROWS_COUNT
       : EXPANDED_SHOWN_ROWS_COUNT;
 
+    setSessionStorage("LEADERBOARD", { shownRowsCount: payload });
     setShownRowsCount(payload);
   };
 

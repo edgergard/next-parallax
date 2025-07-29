@@ -33,7 +33,7 @@ const Footer: React.FC<{ className?: string }> = ({ className }) => {
   return (
     <footer
       aria-label="footer"
-      className={twMerge("flex flex-col h-[600px]", className)}
+      className={twMerge("flex flex-col h-[700px]", className)}
       style={{
         backgroundImage: `url(${BackgroundImage.src})`,
         backgroundSize: "cover",
@@ -41,13 +41,15 @@ const Footer: React.FC<{ className?: string }> = ({ className }) => {
       }}
     >
       <div className="mt-auto flex flex-col gap-y-[27px] px-page-x">
-        <div className="flex justify-center gap-x-[77px] text-white font-semibold">
+        <nav
+          className="flex justify-center gap-x-[77px] text-white font-semibold"
+        >
           {sectionAnchors.map(({ id, name, anchor }) => (
             <a className="cursor-pointer" href={`#${anchor}`} key={id}>
               {name}
             </a>
           ))}
-        </div>
+        </nav>
         <div className="w-full h-px bg-dark-gray-2" />
 
         <div className="flex justify-between">

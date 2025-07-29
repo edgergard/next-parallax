@@ -1,6 +1,7 @@
 "use client";
 
 import classNames from "classnames";
+import type { MouseEvent } from "react";
 import React from "react";
 import { ArrowIcon } from "../icons";
 
@@ -14,7 +15,8 @@ type BaseButtonProps = Omit<
 interface BaseProps {
   disabled?: boolean;
   customClassName?: string;
-  onClick?: () => void;
+  active?: boolean;
+  onClick?: (e: MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
 type Props = (
@@ -37,12 +39,12 @@ const BG_HOVER_GRADIENT_STYLES = `
   hover:bg-linear-120 hover:from-button-gradient-from 
   hover:via-button-gradient-via hover:to-button-gradient-to
 `;
-
 const TEXT_HOVER_GRADIENT_STYLES = `
   ${BG_HOVER_GRADIENT_STYLES}
   hover:text-transparent hover:bg-clip-text
 `;
-
+const activeStyles =
+  "outline !text-blue-500/80 outline-blue-500/80 bg-blue-500/20";
 const variantStyles: Record<ButtonVariant, string> = {
   outline: `
     text-white bg-button-solid-bg text-button-font-color
@@ -51,7 +53,7 @@ const variantStyles: Record<ButtonVariant, string> = {
   `,
   text: `
     text-white bg-button-solid-bg text-button-font-color
-    rounded-button-radius hover:text-transparent 
+     hover:text-transparent 
     hover:bg-clip-text ${TEXT_HOVER_GRADIENT_STYLES}
   `,
   arrow: `
@@ -59,7 +61,6 @@ const variantStyles: Record<ButtonVariant, string> = {
     p-gap-button-arrow rounded-button-radius disabled:border-button-disabled
   `,
 };
-
 const sizeStyles: Record<ButtonSize, string> = {
   small: `
     pt-gap-button-small-t pb-gap-button-small-b 
@@ -75,6 +76,7 @@ const Button: React.FC<Props> = ({
   variant = "outline",
   size,
   disabled,
+  active,
   customClassName,
   arrowDirection,
   children,
@@ -88,12 +90,13 @@ const Button: React.FC<Props> = ({
     `,
     variantStyles[variant],
     size && sizeStyles[size],
+    active && activeStyles,
     customClassName,
   );
 
   const iconClassName = classNames(
     `
-      size-6 transition-colors duration-400 leading-0
+      size-6 transition-all duration-400 leading-0
       group-hover:text-button-gradient-via
     `,
     {

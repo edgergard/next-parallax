@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { Anchor } from "@/enums";
 import { scrollToAnchor } from "@/utils";
@@ -36,21 +36,37 @@ const gradientClassname = `
 `;
 
 const Hero: React.FC<{ className?: string }> = ({ className }) => {
+  const [isActive, setIsActive] = useState(false);
+
+  const handlePageClick = (): void => {
+    setIsActive(true);
+    setTimeout(() => setIsActive(false), 200);
+  };
+
   return (
     <section
-      id={Anchor.Hero}
       aria-label="hero-section"
       className={twMerge("pt-8", className)}
+      id={Anchor.Hero}
+      onClick={handlePageClick}
     >
       <div className="flex justify-center gap-x-4 pb-[100px]">
         <Button
+          active={isActive}
           size="small"
           variant="text"
-          onClick={() => scrollToAnchor(Anchor.Leaderboard)}
+          onClick={(e) => {
+            e.stopPropagation();
+            scrollToAnchor(Anchor.Leaderboard);
+          }}
         >
           LLM Leaderboard
         </Button>
-        <Button size="small" variant="outline">
+        <Button
+          size="small"
+          variant="outline"
+          onClick={(e) => e.stopPropagation()}
+        >
           Buy Spice AI
         </Button>
       </div>
@@ -58,8 +74,9 @@ const Hero: React.FC<{ className?: string }> = ({ className }) => {
       <div className="flex flex-col gap-y-9 pb-[100px]">
         <h1
           className={`
-            font-family-grotesk text-font-size-h1 font-medium max-w-[1629px]
-            text-transparent bg-clip-text ${gradientClassname}
+            font-family-grotesk text-font-size-h1
+            font-medium max-w-[1629px] text-transparent bg-clip-text
+            ${gradientClassname}
           `}
         >
           A new economic primitive for funding decentralized AI
@@ -70,9 +87,23 @@ const Hero: React.FC<{ className?: string }> = ({ className }) => {
           compete against OpenAI
         </p>
 
-        <Button size="big" variant="outline">
-          Buy Spice AI
-        </Button>
+        <div className="flex gap-x-8">
+          <Button
+            size="small"
+            variant="outline"
+            onClick={(e) => e.stopPropagation()}
+          >
+            Buy Spice AI
+          </Button>
+          <Button
+            active={isActive}
+            size="small"
+            variant="text"
+            onClick={(e) => e.stopPropagation()}
+          >
+            Try now
+          </Button>
+        </div>
       </div>
 
       <div className="flex justify-center gap-x-[34px]">
